@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '../Button';
 import CampoTexto from '../CampoTexto';
 import Dropdown from '../Dropdown';
@@ -15,20 +16,51 @@ const Formulario = () => {
         'Inovação e Gestão'
     ]
 
+    const [nome, setNome] = useState('');
+    const [cargo, setCargo] = useState('');
+    const [imagem, setImagem] = useState('');
+    const [time, setTime] = useState('');
+
     const save = (event) => {
         event.preventDefault()
-        console.log('saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaalva');
-        alert('CATAPIMBAS MEU')
+        console.log(nome, cargo, imagem , time);
     }
 
     return (
         <section className="formulario">
             <form onSubmit={save}>
                 <h2>Prencha os dados para criar o card do colaborador</h2>
-                <CampoTexto label="Nome" placeholder="Digite seu nome" required={true} type="text"/>
-                <CampoTexto label="Cargo" placeholder="Digite seu cargo" required={true} type="text"/>
-                <CampoTexto label="Imagem"  placeholder="Digite o endereço da imagem"/>
-                <Dropdown label="Time" required={true} itens={times}/>
+                <CampoTexto 
+                    label="Nome" 
+                    placeholder="Digite seu nome"  
+                    required={true} type="text"
+                    valor={nome}
+                    valueAlterado={valor => setNome(valor)}
+                    />
+
+                <CampoTexto 
+                    label="Cargo" 
+                    placeholder="Digite seu cargo" 
+                    required={true} type="text"
+                    valor={cargo}
+                    valueAlterado={valor => setCargo(valor)}
+                    />
+
+                <CampoTexto 
+                    label="Imagem"  
+                    placeholder="Digite o endereço da imagem"
+                    valor={imagem}
+                    valueAlterado={valor => setImagem(valor)}
+                    />
+
+                <Dropdown 
+                    label="Time" 
+                    required={true} 
+                    itens={times}
+                    valor={time}
+                    valueAlterado={valor => setTime(valor)}
+                    />
+
                 <Button>
                     Criar card
                 </Button>
