@@ -4,7 +4,7 @@ import CampoTexto from '../CampoTexto';
 import Dropdown from '../Dropdown';
 import './index.css'
 
-const Formulario = () => {
+const Formulario = (props) => {
 
     const times = [
         'Programação',
@@ -23,7 +23,12 @@ const Formulario = () => {
 
     const save = (event) => {
         event.preventDefault()
-        console.log(nome, cargo, imagem , time);
+        props.aoColaboradorCadastrado({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
     }
 
     return (
