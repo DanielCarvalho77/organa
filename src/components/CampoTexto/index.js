@@ -15,7 +15,7 @@ const CampoTexto = (props) => {
             </label>
 
             <input 
-                placeholder={props.placeholder} 
+                placeholder={props.placeholder}  
                 type={props.type}
                 required={props.required}
                 value={props.valor}
